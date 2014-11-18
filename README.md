@@ -21,13 +21,19 @@ To run EOL TraitBank:
 Then you can start the container:
 
     docker run -d -p 8890:8890 -p 1111:1111 --name virtuoso \
-    -v /virtuoso-db:/opt/virtuoso/var/lib/virtuoso/db virtuoso:7.1.0
+    -v /virtuoso_db:/opt/virtuoso/var/lib/virtuoso/db virtuoso:7.1.0
 
 ## Set a password:
 
     isql -H <virtuoso-container-ip> exec='set password dba abetterpassword;'
 
-## Enable SPARQL_UPDATE
+## GRANT PERMISSIONS
 
-    isql -P abetterpassword -H <virtuoso-container-ip> exec='grant SPARQL_UPDATE to "SPARQL";'
+    isql 11111 dba abetterpassword -H
+    exec='grant SPARQL_UPDATE to "SPARQL";'
+    GRANT EXECUTE ON SPARUL_CLEAR TO "SPARQL"
+    GRANT EXECUTE ON DB.DBA.SPARUL_DROP TO "SPARQL";
+    GRANT DELETE ON DB.DBA.RDF_QUAD TO "SPARQL";
+    GRANT EXECUTE ON DB.DBA.SPARQL_INSERT_DICT_CONTENT TO "SPARQL";
+    GRANT EXECUTE ON DB.DBA.SPARQL_DELETE_DICT_CONTENT TO "SPARQL";
 
