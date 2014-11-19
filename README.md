@@ -21,7 +21,7 @@ To run EOL TraitBank:
 Then you can start the container:
 
     docker run -d -p 8890:8890 -p 1111:1111 --name virtuoso \
-    -v /virtuoso_db:/opt/virtuoso/var/lib/virtuoso/db virtuoso:7.1.0
+    -v /virtuoso_db:/usr/local/var/lib/virtuoso/db virtuoso:7.1.0
 
 ## Set a password:
 
