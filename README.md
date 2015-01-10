@@ -1,10 +1,10 @@
 docker-virtuoso
 ===============
 
-A Dockerized Virtuoso for EOL
+A Dockerized Virtuoso for Encyclopedia of Life (eol.org)
 
 ```
-$ docker build -t virtuoso:7.1.0 .
+$ docker build --rm -t virtuoso:7.1.0 .
 ```
 
 ## Start a container
@@ -29,7 +29,7 @@ Then you can start the container:
 
 ## GRANT PERMISSIONS
 
-    isql 11111 dba abetterpassword -H
+    isql 1111 dba abetterpassword -H
     exec='grant SPARQL_UPDATE to "SPARQL";'
     GRANT EXECUTE ON SPARUL_CLEAR TO "SPARQL"
     GRANT EXECUTE ON DB.DBA.SPARUL_DROP TO "SPARQL";
