@@ -34,7 +34,9 @@ RUN apt-get update && apt-get -y install \
   \
   apt-get autoremove -y &&\
   \
-  rm -rf /var/lib/{apt,dpkg,cache,log}/
+  rm -rf /var/lib/{apt,dpkg,cache,log}/ &&\
+  \
+  mkdir /var/log/virtuoso-http
 EXPOSE 8890 1111
 CMD  /usr/local/bin/virtuoso-t -f -c \
   /usr/local/var/lib/virtuoso/db/virtuoso.ini
