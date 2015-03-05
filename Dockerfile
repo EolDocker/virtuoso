@@ -1,6 +1,6 @@
 FROM debian:wheezy
 MAINTAINER Dmitry Mozzherin
-
+ENV LAST_FULL_REBUILD 2015-03-05
 RUN apt-get update && apt-get -y install \
   dpkg-dev build-essential autoconf \
   automake libtool flex bison gperf \
