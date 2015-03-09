@@ -1,6 +1,7 @@
 FROM debian:wheezy
 MAINTAINER Dmitry Mozzherin
-ENV LAST_FULL_REBUILD 2015-03-05
+ENV LAST_FULL_REBUILD 2015-03-09
+ENV VIRTUOSO_VERSION 7.2.0
 RUN apt-get update && apt-get -y install \
   dpkg-dev build-essential autoconf \
   automake libtool flex bison gperf \
@@ -8,10 +9,10 @@ RUN apt-get update && apt-get -y install \
   libssl-dev libreadline-dev openssl net-tools wget && \
   \
   wget --no-check-certificate \
-  https://github.com/openlink/virtuoso-opensource/archive/v7.1.0.tar.gz && \
+  https://github.com/openlink/virtuoso-opensource/archive/v$VIRTUOSO_VERSION.tar.gz && \
   \
-  tar zxvf v7.1.0.tar.gz && \
-  cd /virtuoso-opensource-7.1.0 && \
+  tar zxvf v$VIRTUOSO_VERSION.tar.gz && \
+  cd /virtuoso-opensource-$VIRTUOSO_VERSION && \
   \
   ./autogen.sh && \
   ./configure CFLAGS="-O2" --prefix=/usr/local --with-readline && \
@@ -20,9 +21,9 @@ RUN apt-get update && apt-get -y install \
   \
   make install && \
   \
-  rm /v7.1.0.tar.gz && \
+  rm /v$VIRTUOSO_VERSION.tar.gz && \
   \
-  rm -rf /virtuoso-opensource-7.1.0 && \
+  rm -rf /virtuoso-opensource-$VIRTUOSO_VERSION && \
   \
   apt-get -y purge \
   dpkg-dev build-essential autoconf \
